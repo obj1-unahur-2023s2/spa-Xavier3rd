@@ -1,15 +1,15 @@
 object olivia {
-	var concentracion = 3
+	var gradoDeConcentracion = 6
 	
-	method gradoDeConcentracion() = concentracion
+	method gradoDeConcentracion() = gradoDeConcentracion
 	method recibirMasajes(){
-		concentracion += 3 
+		gradoDeConcentracion += 3 
 	}
 	method darseBanioDeVapor(){
 		
 	}
 	method discutir(){
-		concentracion -=1
+		gradoDeConcentracion -=1
 	}
 }
 
@@ -22,10 +22,12 @@ object bruno {
 	method esFeliz() = esFeliz
 	method tieneSed() = tieneSed
 	method peso()= peso
-	method estaPerfecto() = self.esFeliz() && !self.tieneSed() && self.peso().between(50000,70000) //Revisar
+	method estaPerfecto() = esFeliz && !tieneSed && self.peso().between(50000,70000) //Revisar
 	
 	// Métodos de indicacion
-	method recibirMasajes()= self.esFeliz()
+	method recibirMasajes(){
+		esFeliz = true
+	}
 	method darseBanioDeVapor(){
 		peso -= 500
 		tieneSed = true	
@@ -43,9 +45,7 @@ object bruno {
 	method verElNoticiero(){
 		esFeliz = false
 	}
-	method discutir(){
-		
-	}
+	
 	method mediodiaEnCasa(){
 		self.comerFideos()
 		self.tomarAgua()
@@ -54,17 +54,17 @@ object bruno {
 }
 
 object ramiro {
-	var contractura = 0 
-	var nivelDeContractura = 0.max(contractura) //Revisar
+	var nivelDeContractura = 0
 	var tienePielGrasosa = false
 	
+	method tienePielGrasosa() = tienePielGrasosa
 	method recibirMasajes(){
-		contractura -= 2
+		nivelDeContractura = 0.max(nivelDeContractura - 2)
 	}
 	method darseBanioDeVapor(){
 		tienePielGrasosa = false
 	}
-	method comerseUnBigMac(){
+	method comerBigMac(){
 		tienePielGrasosa = true
 	}
 	method bajarALaFosa(){
@@ -76,7 +76,7 @@ object ramiro {
 	}
 	method diaDeTrabajo(){
 		self.bajarALaFosa()
-		self.comerseUnBigMac()
+		self.comerBigMac()
 		self.bajarALaFosa()
 	}
 }
